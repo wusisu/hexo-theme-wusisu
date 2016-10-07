@@ -1,0 +1,39 @@
+.post {
+  padding: 20px;
+}
+
+.toolbar {
+  font-size: 0.75em;
+}
+.toolbar > * {
+  display: inline-block;
+  padding: 0 8px;
+}
+
+body {
+  background: black;
+  color: rgb(0, 255, 0);
+  cursor: cell;
+  line-height: 125%;
+}
+
+.layout {
+  padding: 0 8px;
+}
+
+a {
+  color: orange;
+
+}
+a:hover {
+  color: pink;
+  cursor: cell;
+}
+
+#container {
+  margin-top: 80px;
+}
+
+.tags > span{
+  padding: 0 2px;
+}

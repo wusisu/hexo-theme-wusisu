@@ -1,0 +1,48 @@
+extends partial/layout
+
+//- include mixins/container
+
+block title
+  title= config.title
+
+block container
+  - page.posts.each(function(post) {
+    .post
+      .title
+        a(href=url_for(post.path))
+          != post.title
+        span.layout
+          != post.layout
+      .excerpt
+        != post.excerpt.replace(/<\/?h\d.*?>/g,'').replace(/<p>/g,'<br>').replace(/<\/p>/g,'').replace('<br>','')
+      .toolbar
+        .date
+          != post.date.calendar()
+        .categories
+          - post.categories.each(function(category) {
+            != category.name
+          - })
+        .tags
+          - post.tags.each(function(tag) {
+            span
+              != tag.name
+          - })
+        a(href=url_for(post.path+'#more'))
+          != __('more')
+  - })
+
+block pagination
+  .paginator
+    if page.prev
+      - prev = page.prev_link || '/'
+      a.prev(href=url_for(prev))
+        | <
+        span
+          != __('prev')
+    if page.prev && page.next
+      | ===
+    if page.next_link
+      a.next(href=url_for(page.next_link))
+        span
+          != __('next')
+        | >

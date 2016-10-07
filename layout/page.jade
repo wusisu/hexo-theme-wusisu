@@ -1,0 +1,9 @@
+extends partial/layout
+
+include mixins/container
+
+block title
+  title= page.title
+
+block container
+  != page.content

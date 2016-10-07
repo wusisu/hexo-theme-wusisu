@@ -1,0 +1,22 @@
+mixin home()
+  - page.posts.each(function(post) {
+    .post
+      .title
+        a(href=url_for(post.path))
+          != post.title
+        != post.layout
+      .excerpt
+        != post.excerpt
+      .toolbar
+        .date
+          != post.date
+        .categories
+          - post.categories.each(function(category) {
+            != category.name
+          - })
+        .tags
+          - post.tags.each(function(tag) {
+            != tag.name
+          - })
+        a(href=url_for(post.path)+'#more') moreaa
+  - })

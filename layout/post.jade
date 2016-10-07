@@ -1,0 +1,33 @@
+extends partial/layout
+
+include mixins/container
+
+block title
+  title= page.title
+
+block container
+  .back
+    a.back
+      != __('back')
+  .post
+    .title
+      h2
+        != page.title
+      //- span.layout
+        != page.layout
+    .excerpt
+      != page.excerpt
+    .content
+      a(id="more")
+      != page.more
+    .toolbar
+      .date
+        != page.date.calendar()
+      .categories
+        - page.categories.each(function(category) {
+          != category.name
+        - })
+      .tags
+        - page.tags.each(function(tag) {
+          != tag.name
+        - })
